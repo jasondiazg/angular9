@@ -1,29 +1,33 @@
-<h1 mat-dialog-title>Add new Periodic Entity</h1>
+<h1 mat-dialog-title>{{title}}</h1>
 <div mat-dialog-content>
     <form [formGroup]="form">
         <mat-form-field appearance="fill">
             <mat-label>Name</mat-label>
-            <input matInput formControlName="name">
+            <input matInput formControlName="name" type="text" />
         </mat-form-field>
         <mat-form-field appearance="fill">
             <mat-label>Position</mat-label>
-            <input matInput formControlName="position">
+            <input matInput formControlName="position" type="number" />
         </mat-form-field>
         <mat-form-field appearance="fill">
             <mat-label>Weight</mat-label>
-            <input matInput formControlName="weight">
+            <input matInput formControlName="weight" type="number" />
         </mat-form-field>
         <mat-form-field appearance="fill">
             <mat-label>Symbol</mat-label>
-            <input matInput formControlName="symbol">
+            <input matInput formControlName="symbol" type="text" />
         </mat-form-field>
         <mat-form-field appearance="fill">
             <mat-label>Created</mat-label>
-            <input matInput formControlName="created">
+            <input matInput formControlName="created" type="date">
         </mat-form-field>
     </form>
 </div>
-<div mat-dialog-actions>
-    <button mat-button (click)="cancel()">Cancel</button>
-    <button mat-button [mat-dialog-close]="data" cdkFocusInitial>Add</button>
+<div mat-dialog-actions class="actions">
+    <button mat-button (click)="cancel()">
+        <mat-icon>cancel</mat-icon>&nbsp;Cancel
+    </button>
+    <button mat-button (click)="close()">
+        <mat-icon>save</mat-icon>&nbsp;Save
+    </button>
 </div>

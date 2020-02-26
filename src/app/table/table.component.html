@@ -1,5 +1,11 @@
-<button mat-raised-button color="accent" (click)="loadData()">Load Data!</button>
-<button mat-raised-button (click)="addElement()">Add new element</button>
+<div class="actions">
+    <button mat-mini-fab (click)="add()" color="secondary">
+        <mat-icon>add</mat-icon>
+    </button> 
+    <button mat-mini-fab (click)="loadData()" color="primary">
+        <mat-icon>refresh</mat-icon>
+    </button>
+</div>
 
 <table mat-table [dataSource]="dataSource">
 
@@ -25,6 +31,25 @@
     <ng-container matColumnDef="symbol">
         <th mat-header-cell *matHeaderCellDef> Symbol </th>
         <td mat-cell *matCellDef="let element"> {{element.symbol}} </td>
+    </ng-container>
+
+    <!-- Created Column -->
+    <ng-container matColumnDef="created">
+        <th mat-header-cell *matHeaderCellDef> Created </th>
+        <td mat-cell *matCellDef="let element"> {{element.created}} </td>
+    </ng-container>
+
+    <!-- actions column -->
+    <ng-container matColumnDef="actions">
+        <th mat-header-cell *matHeaderCellDef> Actions </th>
+        <td mat-cell *matCellDef="let element">
+            <button mat-mini-fab (click)="edit(element)" color="primary">
+                <mat-icon>edit</mat-icon>
+            </button>
+            <button mat-mini-fab (click)="delete(element)">
+                <mat-icon>delete</mat-icon>
+            </button>
+        </td>
     </ng-container>
 
     <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
