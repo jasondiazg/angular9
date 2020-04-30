@@ -16,6 +16,7 @@ import { AppComponent } from './app.component';
 import { ToolbarComponent } from './toolbar/toolbar.component';
 import { TableComponent } from './table/table.component';
 import { FormComponent } from './form/form.component';
+import { PeriodicElementService } from './services/periodic-element.service';
 
 @NgModule({
   declarations: [
@@ -39,7 +40,7 @@ import { FormComponent } from './form/form.component';
     MatInputModule,
     MatIconModule
   ],
-  providers: [],
+  providers: [PeriodicElementService],
   bootstrap: [AppComponent],
   entryComponents: [FormComponent]
 })

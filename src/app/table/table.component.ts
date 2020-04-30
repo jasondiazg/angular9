@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy, OnChanges, SimpleChanges } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { Periodic, Utils } from '../entities/Periodic';
 import { PeriodicElementService } from '../services/periodic-element.service';
@@ -9,7 +9,7 @@ import { FormComponent } from '../form/form.component';
   templateUrl: './table.component.html',
   styleUrls: ['./table.component.css']
 })
-export class TableComponent implements OnInit {
+export class TableComponent implements OnInit, OnDestroy, OnChanges {
   displayedColumns: string[] = ['position', 'name', 'weight', 'symbol', 'created', 'actions'];
   dataSource = ELEMENT_DATA;
   periodicEntity: Periodic;
@@ -21,8 +21,20 @@ export class TableComponent implements OnInit {
 
   }
 
+  ngOnDestroy(): void {
+
+  }
+
+  ngOnChanges(changes: SimpleChanges): void {
+    if (changes.dataSource && changes.dataSource.currentValue != this.dataSource) {
+      // TODO: do something when data source variable change
+    }
+  }
+
   loadData() {
-    this.periodicElementService.getAll().subscribe(periodicElements => this.dataSource = periodicElements);
+    let observable = this.periodicElementService.getAll();
+    observable.subscribe(periodicElements => this.dataSource = periodicElements);
+    observable.subscribe(periodicElements => console.log(periodicElements));
   }
 
   add(): void {

@@ -26,6 +26,12 @@ export class FormComponent implements OnInit {
       this.data.created = this.data.created ? this.data.created : Utils.todayAsString();
       this.form.patchValue(this.data);
     }
+
+    this.form.valueChanges.subscribe(value => {
+      if (value) {
+
+      }
+    });
   }
 
   cancel(): void {

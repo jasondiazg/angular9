@@ -13,7 +13,7 @@ export class PeriodicElementService {
   constructor(public http: HttpClient) { }
 
   get(id: number): Observable<Periodic> {
-    return this.http.get<any>(`${apis.periodic.get}/${id}`)
+    return this.http.get<Periodic>(`${apis.periodic.get}/${id}`)
       .pipe(
         map(response => response),
         catchError((error: HttpErrorResponse) => throwError(error))
@@ -21,7 +21,7 @@ export class PeriodicElementService {
   }
 
   getAll(): Observable<Periodic[]> {
-    return this.http.get<any>(`${apis.periodic.getAll}`)
+    return this.http.get<Periodic[]>(`${apis.periodic.getAll}`)
       .pipe(
         map(response => response),
         catchError((error: HttpErrorResponse) => throwError(error))
@@ -29,7 +29,7 @@ export class PeriodicElementService {
   }
 
   post(periodic: Periodic): Observable<Periodic> {
-    return this.http.post<any>(`${apis.periodic.post}`, periodic)
+    return this.http.post<Periodic>(`${apis.periodic.post}`, periodic)
       .pipe(
         map(response => response),
         catchError((error: HttpErrorResponse) => throwError(error))
@@ -37,7 +37,7 @@ export class PeriodicElementService {
   }
 
   put(periodic: Periodic): Observable<Periodic> {
-    return this.http.put<any>(`${apis.periodic.put}`, periodic)
+    return this.http.put<Periodic>(`${apis.periodic.put}`, periodic)
       .pipe(
         map(response => response),
         catchError((error: HttpErrorResponse) => throwError(error))
@@ -45,7 +45,7 @@ export class PeriodicElementService {
   }
 
   delete(id: number): Observable<Periodic> {
-    return this.http.delete<any>(`${apis.periodic.delete}/${id}`)
+    return this.http.delete<Periodic>(`${apis.periodic.delete}/${id}`)
       .pipe(
         map(response => response),
         catchError((error: HttpErrorResponse) => throwError(error))
